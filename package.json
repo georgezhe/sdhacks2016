@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/georgezhe/sdhacks2016#readme",
   "dependencies": {
-    "mongodb": "^2.2.10"
+    "mongodb": "^2.2.10",
+    "node-cron": "^1.1.2"
   }
 }
