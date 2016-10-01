@@ -3,7 +3,6 @@ window.onload = function(){
 	document.getElementById("button").addEventListener("click", function(){
 		console.log("asdf");
 		console.log(document.getElementById("textBox"));
-
 	});
 }
 

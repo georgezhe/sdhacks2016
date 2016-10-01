@@ -1,3 +1,5 @@
+
+
 document.getElementById("button").addEventListener("click", function(){
-	console.log("asdf");
+	console.log(document.getElementById('frame').src);
 });
