@@ -1,9 +1,9 @@
 var fs = require('fs'),
     request = require('request'),
     cheerio = require('cheerio');
-	
-url = 'http://www.amazon.co.uk/gp/product/1118531647';
-
+function scraper(url, data)
+{	
+    
 request(url, function(error, response, html) {
     var price;
     var json = {
@@ -29,4 +29,6 @@ request(url, function(error, response, html) {
         })
     }
 });
+}
+module.exports=scraper;
 

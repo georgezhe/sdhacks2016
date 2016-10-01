@@ -1,8 +1,12 @@
+var scrapper = require('./middleware/scraper');
 module.exports=function(app){
 	
-	app.get('/',function(req,res){
-		res.render('index');
-	});
+
+app.post("/", function(req,res,next){
+	console.log(req.body)
+	scrapper(req.body.url,req.body.data);
+
+});
 
 
 }

@@ -36,9 +36,17 @@ app.use(require('express-session')({
 
 app.use(express.static(__dirname + '/public'));
 
+var cron = require('node-cron');
+ 
+var task = cron.schedule('* * * * *', function() {
+  console.log('immediately started');
+}, false);
+ 
+task.start();
 
-require('./routes/index.js')(app);
+require('./routes/index');
 
 app.listen(3000, function(){
 	console.log("Server is UP!!!!!!!!!!!!!");
 });
+
