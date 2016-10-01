@@ -44,9 +44,18 @@ app.use(require('express-session')({
 app.use(express.static(__dirname + '/public'));
 
 var cron = require('node-cron');
- 
+var scraper = require('./routes/middleware/scraper');
 var task = cron.schedule('* * * * *', function() {
-  console.log('immediately started');
+  DatabaseUserInfo.find({}, function(err, database) {
+        if (err) {
+			console.log(err);
+		}
+		database.foreach(function(data)
+		{
+			scraper(data.url,data.data);
+		});
+
+    });
 }, false);
  
 task.start();
