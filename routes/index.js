@@ -6,8 +6,8 @@ app.post('/',function(req,res){
 	var toWrite = new DatabaseUserInfo({
 		email: "asdf@ucsd.edu",
 		url: "www.google.com",
-			
-	})
+
+	});
 
 	toWrite.save(function (err, fluffy) {
 		if (err) return console.error(err);
