@@ -1,4 +1,4 @@
-/**
+	/**
  *Module dependencies
  */
 
@@ -39,6 +39,6 @@ app.use(express.static(__dirname + '/public'));
 
 require('./routes/index.js')(app);
 
-app.listen(3000, function(){
+app.listen(8080, function(){
 	console.log("Server is UP!!!!!!!!!!!!!");
 });
