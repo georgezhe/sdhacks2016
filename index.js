@@ -67,9 +67,9 @@ client.transmissions.send({
   }
 });
 */
-
+var asdf = require('./scraper');
 var cron = require('node-cron');
-var task = cron.schedule('* * * * *', function() {
-	console.log("asdf");
+var task = cron.schedule('* * * * * *', function() {
+	asdf.scraper('https://www.amazon.com/gp/product/B00ZV9PXP2/ref=s9_acss_bw_cg_odsbnc_1a1?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-2&pf_rd_r=RTZCBHZ5M8ZFBK9SJQRT&pf_rd_t=101&pf_rd_p=226099ad-0078-48a7-828f-90708e221209&pf_rd_i=6669702011', '#priceblock_ourprice');	
 });
 
