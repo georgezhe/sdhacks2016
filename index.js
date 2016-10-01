@@ -4,8 +4,15 @@
 
  /*The Sever code*/
 
-var express = require('express');
-
+var express = require('express'),
+	routes=require('routes');
+var dbURL = 'mongodb://localhost:27017/test';
+var mongoose = require('mongoose')
+var db = mongoose.connect(dbURL);
+mongoose.Promise = require('bluebird');
+mongoose.connection.once('connected', function() {
+    console.log("Connected to database")
+});
 var bodyParser = require('body-parser');
 
 var app = express();
