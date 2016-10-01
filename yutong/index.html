@@ -2,10 +2,14 @@
 </head>
 <body>
 
-	<input type="text">
+	<input type="text" id="textBox">
 	<input type="button" id="button">
-	<iframe id="frame" src="https://www.google.com"></iframe>
+	<iframe src="https://www.google.com">
 
-	<script type="text/javascript" src="./temp.js"></script>
+	</iframe>
+	<script type="text/javascript">
+		window.document.domain = "www.google.com";
+	</script>
+	<!--<script type="text/javascript" src="./temp.js"></script>-->
 
 </body>
