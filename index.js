@@ -81,7 +81,7 @@ app.listen(2000, function() {
 
 var asdf = require('./scraper');
 var cron = require('node-cron');
-var task = cron.schedule('30  * * * * *', function() {
+var task = cron.schedule('* * * * *', function() {
 	DatabaseUserInfo.find(function(err, database) {
 		if (err) {
 			console.log(err);
