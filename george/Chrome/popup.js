@@ -54,6 +54,7 @@ chrome.runtime.getBackgroundPage(function(bg){
 
 function startNotificaiton() {
   var value = document.getElementById('selected_value_text_area').innerText;
+  console.log(value);
   var url = document.getElementById('url_text_area').innerText;
   var xpath = document.getElementById('xpath_text_area').innerText;
   var email = document.getElementById('email_text_area').innerText;
@@ -62,9 +63,9 @@ function startNotificaiton() {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open("POST", "http://localhost:3000");
   xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-  xmlhttp.send("email = " + value +
+  xmlhttp.send("email = " + email +
                ", url = " + url + 
                ", xpath = " + xpath + 
                ", value = " + value +
-               "upper_bound = " + upper_bound);
+               ", upper_bound = " + upper_bound);
 }
