@@ -1,3 +1,8 @@
+var script = document.createElement('script');
+script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 // Unique ID for the className.
 var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 
@@ -44,18 +49,36 @@ document.addEventListener('click', function(e){
   if(isSelecting)
   {
  
-    xpath = createXPathFromElement(srcElement).replace(" crx_mouse_visited", "").replace("crx_mouse_visited", "");
+    //xpath = createXPathFromElement(srcElement).replace(" crx_mouse_visited", "").replace("crx_mouse_visited", "");
+    xpath = getXPath(srcElement).replace(" crx_mouse_visited", "").replace("crx_mouse_visited", "");
     console.log(xpath);
-  chrome.runtime.sendMessage({selected_value: srcElement.innerText, selected_xpath: xpath}, function(response) {
+  chrome.runtime.sendMessage({selected_value: srcElement.innerText, selected_id: srcElement.getAttribute('id')}, function(response) {
   //console.log(response.farewell);
   });
   }
 })
 
+/*
 document.addEventListener('mouseout', function(e){
   console.log(xpath);
   console.log(lookupElementByXPath(xpath));
 })
+*/
+
+function getXPath( element )
+{
+var val=element.value;
+    //alert("val="+val);
+    var xpath = '';
+    for ( ; element && element.nodeType == 1; element = element.parentNode )
+    {
+        //alert(element);
+        var id = $(element.parentNode).children(element.tagName).index(element) + 1;
+        id > 1 ? (id = '[' + id + ']') : (id = '');
+        xpath = '/' + element.tagName.toLowerCase() + id + xpath;
+    }
+    return xpath;
+}
 
 function createXPathFromElement(elm) { 
     var allNodes = document.getElementsByTagName('*'); 
