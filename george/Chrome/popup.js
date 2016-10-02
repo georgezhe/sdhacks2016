@@ -22,10 +22,11 @@ chrome.runtime.getBackgroundPage(function(bg){
   setInterval(function(){
     bg.sessionDataHTML = document.body.innerHTML;
   },1000);    
-  document.getElementById('select_button').onclick = doSomething;
+  document.getElementById('select_button').onclick = toggleSelection;
+  document.getElementById('notify_button').onclick = startNotificaiton;
 
     var button = document.getElementById('select_button');
-    function doSomething() {
+    function toggleSelection() {
       console.log("hello world");
       if (isSelecting == true)
       {
@@ -48,7 +49,24 @@ chrome.runtime.getBackgroundPage(function(bg){
           });});
       }
     }
-      });
+  });
+
+function startNotificaiton() {
+  var value = document.getElementById('selected_value_text_area').innerText;
+  var url = document.getElementById('url_text_area').innerText;
+  var xpath = document.getElementById('xpath_text_area').innerText;
+  var email = document.getElementById('email_text_area').innerText;
+  var upper_bound = document.getElementById('upper_bound_text_area').innerText;
+
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", "http://localhost:3000");
+  xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
+  xmlhttp.send("email = " + value +
+               ", url = " + url + 
+               ", xpath = " + xpath + 
+               ", value = " + value +
+               "upper_bound = " + upper_bound);
+}
 
 
 /**

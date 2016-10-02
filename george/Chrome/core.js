@@ -43,7 +43,7 @@ document.addEventListener('click', function(e){
   console.log(srcElement.innerText);
   //if(isSelecting)
   //{
-
+ 
     xpath = createXPathFromElement(srcElement).replace(" crx_mouse_visited", "").replace("crx_mouse_visited", "");
     console.log(xpath);
   chrome.runtime.sendMessage({selected_value: srcElement.innerText, selected_xpath: createXPathFromElement(srcElement)}, function(response) {
