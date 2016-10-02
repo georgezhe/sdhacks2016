@@ -22,6 +22,7 @@
       textarea {
         resize: none;
         white-space: nowrap;
+        overflow: auto;
       }
     </style>
     
@@ -37,19 +38,19 @@
   </head>
   <body>
     <label for="selected_value_text_area">Selected Value: </label>
-    <textarea rows="1" cols="50" id="selected_value_text_area" disabled="disabled"></textarea>
+    <textarea rows="2" cols="50" id="selected_value_text_area" disabled="disabled"></textarea>
     <label for="url_text_area">URL: </label>
-    <textarea rows="1" cols="50" id="url_text_area" disabled="disabled"></textarea>
+    <textarea rows="2" cols="50" id="url_text_area" disabled="disabled"></textarea>
     <label for="xpath_text_area">XPath: </label>
-    <textarea rows="1" cols="50" id="xpath_text_area" disabled="disabled"></textarea>
+    <textarea rows="2" cols="50" id="xpath_text_area" disabled="disabled"></textarea>
     <br>
     <br>
     
       
       <label for="email_text_area">Email me: </label>
-      <textarea rows="1" cols="50" id="email_text_area" placeholder="youremail@host.com"></textarea>
+      <textarea rows="2" cols="50" id="email_text_area" placeholder="youremail@host.com"></textarea>
       <label for="upper_bound_text_area">If value is under: </label>
-      <textarea rows="1" cols="50" id="upper_bound_text_area" placeholder="(e.g.) 45, 193.1, 200.03"></textarea>
+      <textarea rows="2" cols="50" id="upper_bound_text_area" placeholder="(e.g.) 45, 193.1, 200.03"></textarea>
     <button type="button" id="select_button" value="Select Element!">Select Element!</button>
     <button type="button" id="notify_button" value="Notify Me!">Notify Me!</button>
     <script src="popup.js"></script>
