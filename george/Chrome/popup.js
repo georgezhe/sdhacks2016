@@ -53,23 +53,21 @@ chrome.runtime.getBackgroundPage(function(bg){
   });
 
 function startNotificaiton() {
+
   var value = document.getElementById('selected_value_text_area').value;
   var url = document.getElementById('url_text_area').value;
   var xpath = document.getElementById('xpath_text_area').value;
   var email = document.getElementById('email_text_area').value;
   var upper_bound = document.getElementById('upper_bound_text_area').value;
 
-  console.log("email = " + email +
-               ", url = " + url + 
-               ", xpath = " + xpath + 
-               ", value = " + value +
-               ", upper_bound = " + upper_bound);
+  
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("POST", "http://localhost:3000");
+  xmlhttp.open("POST", "http://localhost:8080");
   xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-  xmlhttp.send("email = " + email +
-               ", url = " + url + 
-               ", xpath = " + xpath + 
-               ", value = " + value +
-               ", upper_bound = " + upper_bound);
+
+  xmlhttp.send("email=" + email +
+               "&url=" + url + 
+               "&xpath=" + xpath + 
+               "&value=" + value +
+               "&upper_bound=" + upper_bound);
 }
