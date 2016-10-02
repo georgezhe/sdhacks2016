@@ -41,15 +41,15 @@ document.addEventListener('click', function(e){
   var srcElement = e.srcElement;
   var curr_url;
   console.log(srcElement.innerText);
-  //if(isSelecting)
-  //{
+  if(isSelecting)
+  {
  
     xpath = createXPathFromElement(srcElement).replace(" crx_mouse_visited", "").replace("crx_mouse_visited", "");
     console.log(xpath);
-  chrome.runtime.sendMessage({selected_value: srcElement.innerText, selected_xpath: createXPathFromElement(srcElement)}, function(response) {
+  chrome.runtime.sendMessage({selected_value: srcElement.innerText, selected_xpath: xpath}, function(response) {
   //console.log(response.farewell);
   });
-  //}
+  }
 })
 
 document.addEventListener('mouseout', function(e){
