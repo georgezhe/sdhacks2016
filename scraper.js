@@ -23,7 +23,9 @@ module.exports={
                 var price = el.text();
                 console.log(price);
                 json.price = price;
-
+				if (price < oldPrice) {
+					sendEmail(address, price);
+				}
 
             }
 
@@ -32,15 +34,13 @@ module.exports={
 
 };
 
-}
-
-function sendEmail(address){
+function sendEmail(address, price){
     client.transmissions.send({
         transmissionBody: {
             content: {
                 from: 'postmaster@yuy104.me',
-                subject: 'Hello, World!',
-                html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
+                subject: 'Price Change!',
+                html: '<html> <div class="container"> <head> <style> @import \'https://fonts.googleapis.com/css?family=Fredoka+One\';  #banner{ background: rgba(0, 158, 76, .8); padding: 10px; padding-left: 25px; margin: 5px; font-family: \'Fredoka One\', cursive; #font-family: "Georgia", serif; font-weight: bold; font-size: 50px; #color: #f2f2f2; color: #ffffff; }  #link, #notification{ font-family: "Georgia", serif; font-weight: bold; font-size: 22px; } </style> </head> <body bgcolor="#DEFFDD"> <p id="banner"> YUY104 </p> <p id="notification"> An item you were keeping track of has an updated price of: ' + price + '</p> <p id="link"> Check it out at: ' + address + '</p> </body> </div> </html>'
             },
             recipients: [
             {address: address}
