@@ -1,6 +1,11 @@
+var SparkPost = require('sparkpost');
+var client = new SparkPost('7ffe9704ea4f16c7bf335e11e7cb2fa5656f0288');
 
 module.exports={
-    scraper: function(inputUrl, id){
+    scraper: function(inputUrl, id, address, oldPrice){
+
+
+
         var fs = require('fs'),
         request = require('request'),
         cheerio = require('cheerio');
@@ -18,20 +23,36 @@ module.exports={
                 var price = el.text();
                 console.log(price);
                 json.price = price;
-                fs.readFile('price.json', function(err, data) {
-                    if (err) throw err;
-                    var obj = JSON.parse(data);
-                    if (obj.price != price) {
-                     console.log('Price has changed.');
-                     fs.writeFile('price.json', JSON.stringify(json, null, 4), function(err) {
-                      console.log('Price saved in price.json file');
-                  });
-                 }
-             });
+
 
             }
+
         });
     }
 
 };
+
+}
+
+function sendEmail(address){
+    client.transmissions.send({
+        transmissionBody: {
+            content: {
+                from: 'postmaster@yuy104.me',
+                subject: 'Hello, World!',
+                html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
+            },
+            recipients: [
+            {address: address}
+            ]
+        }
+    }, function(err, res) {
+        if (err) {
+            console.log('Whoops! Something went wrong');
+            console.log(err);
+        } else {
+            console.log('Woohoo! You just sent your first mailing!');
+        }
+    });
+}
 

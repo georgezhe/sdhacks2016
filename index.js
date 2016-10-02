@@ -1,24 +1,3 @@
-function sendEmail(address){
-	client.transmissions.send({
-		transmissionBody: {
-			content: {
-				from: 'postmaster@yuy104.me',
-				subject: 'Hello, World!',
-				html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
-			},
-			recipients: [
-			{address: address}
-			]
-		}
-	}, function(err, res) {
-		if (err) {
-			console.log('Whoops! Something went wrong');
-			console.log(err);
-		} else {
-			console.log('Woohoo! You just sent your first mailing!');
-		}
-	});
-}
 
 
 var express = require('express'),
@@ -69,19 +48,17 @@ app.use(require('express-session')({
 
 //require('./routes/index');
 
-var SparkPost = require('sparkpost');
-var client = new SparkPost('7ffe9704ea4f16c7bf335e11e7cb2fa5656f0288');
 
 
 app.post('/',function(req,res){
-	console.log(req.body);
 	var toWrite = new DatabaseUserInfo({
 		email: req.body.email,
 		url: req.body.url,
-		xpath: req.body.xpath,
+		id: req.body.id,
 		value: req.body.value,
 		upper_bound: req.body.upper_bound
 	});
+
 
 	toWrite.save(function (err, fluffy) {
 		if (err) return console.error(err);
@@ -95,24 +72,24 @@ app.post('/',function(req,res){
 	});
 });
 
-app.listen(8080, function() {
+app.listen(2000, function() {
 	console.log("Server is UP!!!!!!!!!!!!!");
 });
 
 
-
-/*var asdf = require('./scraper');
+var asdf = require('./scraper');
 var cron = require('node-cron');
 var task = cron.schedule('* * * * * *', function() {
-	    DatabaseUserInfo.find(function(err, database) {
-        if (err) {
-            console.log(err);
-        }
-        console.log(database);
+	DatabaseUserInfo.find(function(err, database) {
+		if (err) {
+			console.log(err);
+		}
+		for(var i = 0;i<database.length;i++){
+			asdf.scraper(database[i].url, database[i].id, database[i].email, database[i].value);
+		}
 
-    });
-	//asdf.scraper('https://www.amazon.com/gp/product/B00ZV9PXP2/ref=s9_acss_bw_cg_odsbnc_1a1?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-2&pf_rd_r=RTZCBHZ5M8ZFBK9SJQRT&pf_rd_t=101&pf_rd_p=226099ad-0078-48a7-828f-90708e221209&pf_rd_i=6669702011', '#priceblock_ourprice');	
+	});
 });
 
 
-task.start();*/
+task.start();
