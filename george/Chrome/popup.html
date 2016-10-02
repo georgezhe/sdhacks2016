@@ -19,8 +19,16 @@
         overflow: hidden;
         max-width: 400px;
       }
+      textarea {
+        resize: none;
+        white-space: nowrap;
+      }
     </style>
+<<<<<<< HEAD
     <input type="text"></input>
+=======
+    
+>>>>>>> master
 
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
@@ -28,10 +36,19 @@
       -
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
-    <script src="popup.js"></script>
+
 
   </head>
   <body>
+    <label for="selected_value_text_area">Selected Value: </label>
+    <textarea rows="1" cols="50" id="selected_value_text_area" disabled="disabled"></textarea>
+    <label for="url_text_area">URL: </label>
+    <textarea rows="1" cols="50" id="url_text_area" disabled="disabled"></textarea>
+    <label for="xpath_text_area">XPath: </label>
+    <textarea rows="1" cols="50" id="xpath_text_area" disabled="disabled"></textarea>
+    <button type="button" id="select_button" value="Select Element!">Select Element!</button>
+    <script src="popup.js"></script>
+    <script src="background.js"></script>
     <div id="status"></div>
     <img id="image-result" hidden>
   </body>
