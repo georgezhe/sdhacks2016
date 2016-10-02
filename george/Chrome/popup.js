@@ -62,11 +62,10 @@ function startNotificaiton() {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open("POST", "http://localhost:8080");
   xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-  var output = "email = " + value +
+
+  xmlhttp.send("email = " + email +
                ", url = " + url + 
                ", xpath = " + xpath + 
                ", value = " + value +
-               "upper_bound = " + upper_bound;
-  console.log(output)
-  xmlhttp.send(output);
+               ", upper_bound = " + upper_bound);
 }
