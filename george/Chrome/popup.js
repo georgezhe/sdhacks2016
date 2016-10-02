@@ -60,11 +60,13 @@ function startNotificaiton() {
   var upper_bound = document.getElementById('upper_bound_text_area').innerText;
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("POST", "http://localhost:3000");
+  xmlhttp.open("POST", "http://localhost:8080");
   xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-  xmlhttp.send("email = " + value +
+  var output = "email = " + value +
                ", url = " + url + 
                ", xpath = " + xpath + 
                ", value = " + value +
-               "upper_bound = " + upper_bound);
+               "upper_bound = " + upper_bound;
+  console.log(output)
+  xmlhttp.send(output);
 }
