@@ -17,7 +17,7 @@ var Schema = mongoose.Schema;
 var userInfo = new Schema({
 	email: String,
 	url: String,
-	xpath: String,
+	id: String,
 	value: String,
 	upper_bound: String
 });
@@ -51,7 +51,9 @@ app.use(require('express-session')({
 
 
 app.post('/',function(req,res){
+	console.log(req.body);
 	var toWrite = new DatabaseUserInfo({
+
 		email: req.body.email,
 		url: req.body.url,
 		id: req.body.id,
@@ -79,7 +81,7 @@ app.listen(2000, function() {
 
 var asdf = require('./scraper');
 var cron = require('node-cron');
-var task = cron.schedule('* * * * * *', function() {
+var task = cron.schedule('30  * * * * *', function() {
 	DatabaseUserInfo.find(function(err, database) {
 		if (err) {
 			console.log(err);
