@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-window.onload = function(){
-	console.log("asdf");
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "http://localhost:3000");
-	xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-	xmlhttp.send("asdf=ddd");
-=======
+
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -74,9 +67,4 @@ function startNotificaiton() {
                ", xpath = " + xpath + 
                ", value = " + value +
                "upper_bound = " + upper_bound);
-}
-
->>>>>>> master
-
-
 }
