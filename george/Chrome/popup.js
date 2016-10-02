@@ -54,9 +54,9 @@ chrome.runtime.getBackgroundPage(function(bg){
 
 function startNotificaiton() {
 
-  var value = document.getElementById('selected_value_text_area').value;
+  var value = document.getElementById('numerical_value_text_area').value;
   var url = document.getElementById('url_text_area').value;
-  var xpath = document.getElementById('xpath_text_area').value;
+  var id = document.getElementById('id_text_area').value;
   var email = document.getElementById('email_text_area').value;
   var upper_bound = document.getElementById('upper_bound_text_area').value;
 
@@ -65,9 +65,9 @@ function startNotificaiton() {
   xmlhttp.open("POST", "http://localhost:8080");
   xmlhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
 
-  xmlhttp.send("email=" + email +
+  xmlhttp.send("&email=" + email +
                "&url=" + url + 
-               "&xpath=" + xpath + 
+               "&id=#" + id + 
                "&value=" + value +
                "&upper_bound=" + upper_bound);
 }
